@@ -14,7 +14,7 @@ public class BaseService {
 //	private static final String BASE_URI = "http://localhost:3000";
 	
 	// Base URI updated for GitHub Actions
-	private static final String BASE_URI = "https://03cd-27-5-200-251.ngrok-free.app";
+	private static final String BASE_URI = "https://57ce-27-5-200-251.ngrok-free.app";
 	
 	private RequestSpecification requestSpecification;
 
