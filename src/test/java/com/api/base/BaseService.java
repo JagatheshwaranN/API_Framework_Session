@@ -1,7 +1,5 @@
 package com.api.base;
 
-import static io.restassured.RestAssured.given;
-
 import com.api.filter.LogFilter;
 
 import io.restassured.RestAssured;
@@ -16,22 +14,35 @@ public class BaseService {
 	// Base URI updated for GitHub Actions
 	private static final String BASE_URI = "https://57ce-27-5-200-251.ngrok-free.app";
 	
-	private RequestSpecification requestSpecification;
+	private static final ThreadLocal<RequestSpecification> requestSpecification = new ThreadLocal<RequestSpecification>(); 
 
 	static {
 		RestAssured.filters(new LogFilter());
 	}
 
 	public BaseService() {
-		requestSpecification = given().baseUri(BASE_URI);
+		getRequestSpecification();
+	}
+	
+	protected RequestSpecification getRequestSpecification() {
+		RequestSpecification spec = requestSpecification.get();
+		if(spec == null) {
+			spec = initRequestSpecification();
+			requestSpecification.set(spec);
+		}
+		return spec;
+	}
+
+	private RequestSpecification initRequestSpecification() {
+		return RestAssured.given().baseUri(BASE_URI);
 	}
 
 	protected Response postRequest(Object payload, String endpoint) {
-		return requestSpecification.contentType(ContentType.JSON).body(payload).post(endpoint);
+		return getRequestSpecification().contentType(ContentType.JSON).body(payload).post(endpoint);
 	}
 
 	protected Response getRequest(String param, String endpoint) {
-		return requestSpecification.pathParam("studentId", param).get(endpoint + "/{studentId}");
+		return getRequestSpecification().pathParam("studentId", param).get(endpoint + "/{studentId}");
 	}
 	
 }

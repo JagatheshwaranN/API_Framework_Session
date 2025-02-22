@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite>
 <suite name="API Test Suite">
-	<test thread-count="5" name="API Test">
+	<test thread-count="4" name="API Test">
 		<classes>
 			<class name="com.api.test.GetUserTest">
 				<methods>
-					<include name="getUserTest" />
+					<include name="getUserTest1" />
+					<include name="getUserTest2" />
 				</methods>
 			</class>
+			<!-- <class name="com.api.test.AddUserTest">
+				<methods>
+					<include name="addUserTest1" />
+					<include name="addUserTest2" />
+				</methods>
+			</class> -->
 		</classes>
 	</test>
 </suite>

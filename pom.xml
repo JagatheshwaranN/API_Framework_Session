@@ -54,6 +54,8 @@
 							src/test/resources/runner/${suite}.xml
 						</suiteXmlFile>
 					</suiteXmlFiles>
+					<parallel>methods</parallel>
+					<threadCount>4</threadCount>
 				</configuration>
 			</plugin>
 		</plugins>
