@@ -11,7 +11,11 @@ import io.restassured.specification.RequestSpecification;
 
 public class BaseService {
 
-	private static final String BASE_URI = "http://localhost:3000";
+//	private static final String BASE_URI = "http://localhost:3000";
+	
+	// Base URI updated for GitHub Actions
+	private static final String BASE_URI = "https://03cd-27-5-200-251.ngrok-free.app";
+	
 	private RequestSpecification requestSpecification;
 
 	static {
