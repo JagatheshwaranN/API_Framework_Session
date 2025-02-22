@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite>
+<suite name="API Test Suite">
+	<test thread-count="5" name="API Test">
+		<classes>
+			<class name="com.api.test.GetUserTest">
+				<methods>
+					<include name="getUserTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
