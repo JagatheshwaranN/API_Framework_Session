@@ -7,18 +7,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.api.models.request.Student;
-import com.api.resources.StudentService;
 
 import io.restassured.response.Response;
 
-public class AddUserTest {
+public class UpdateUserTest extends BaseTest {
 
 	@Test
-	public void addUserTest1() {
+	public void updateUserTest1() {
 		List<String> courses = Arrays.asList("Science", "Commerce", "Accounts");
-		Student student = new Student("Thread3 User", "Texas", "312-345-5677", courses);
-		StudentService service = new StudentService();
-		Response response = service.addStudent(student);
+		Student student = new Student("Thread1 User", "New York", "312-345-5677", courses);
+		Response response = service.updateStudent(student, "0cde");
 		com.api.models.response.Student reStudent = response.as(com.api.models.response.Student.class);
 		System.out.println(reStudent.getId());
 		System.out.println(reStudent.getName());
